@@ -12,4 +12,6 @@ Sort out players and find details of any specific NHL player including playing h
 
 1.0 - Player database completed, players' photo is uploaded from Wiki
 
-# The app is deployed at: https://dialex2006-streamlit-nhl-app-app-z6rhvv.streamlit.app
+# The app is deployed at:
+
+https://dialex2006-streamlit-nhl-app-app-z6rhvv.streamlit.app
