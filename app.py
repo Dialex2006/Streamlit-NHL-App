@@ -129,25 +129,30 @@ if add_selectbox2 != "All":
 
             # display selected player's info
 
-            left, mid, right = st.columns([2, 1, 1])
+            left, mid, right = st.columns([1.2, 1, 2])
             with left: 
                 st.metric(label="Full Name", value=player_to_show['First Name'].iloc[0] + " " + player_to_show['Last Name'].iloc[0])
-            with mid: 
-                st.metric(label="Country", value=player_to_show['Country'].iloc[0])
-            with right: 
-                st.metric(label="Team", value=player_to_show['Team'].iloc[0])
-
-
-            left, mid, right = st.columns([2, 1, 1])
-            with left: 
                 st.image(
                 pic_link,
-                width=300, # Manually Adjust the width of the image as per requirement
+                width=200, # Manually Adjust the width of the image as per requirement
                 )
             with mid: 
+                st.metric(label="Country", value=player_to_show['Country'].iloc[0])
                 st.metric(label="Year of birth", value=player_to_show['Birth Year'].iloc[0])
-            with right:
+                st.metric(label="Team", value=player_to_show['Team'].iloc[0])
                 st.metric(label="Position", value=player_to_show['Position'].iloc[0])
+            with right: 
+                # sending get request and saving the response as response object
+                r = requests.get(url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + player_to_show['First Name'].iloc[0] + " " + player_to_show['Last Name'].iloc[0] + " highlights&key=AIzaSyC4iii0POX4JR9xqWQDI-G4VYZJtC5Xw08")
+            
+                # extracting data in json format
+                data = r.json()["items"][0]["id"]["videoId"]
+                st.metric(label="Highlights", value="")
+                st.video("https://www.youtube.com/watch?v="+data)
+
+
+    
+
 
             
 
