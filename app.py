@@ -143,7 +143,7 @@ if add_selectbox2 != "All":
                 st.metric(label="Position", value=player_to_show['Position'].iloc[0])
             with right: 
                 # sending get request and saving the response as response object
-                r = requests.get(url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + player_to_show['First Name'].iloc[0] + " " + player_to_show['Last Name'].iloc[0] + " highlights&key=AIzaSyC4iii0POX4JR9xqWQDI-G4VYZJtC5Xw08")
+                r = requests.get(url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + player_to_show['First Name'].iloc[0] + " " + player_to_show['Last Name'].iloc[0] + " highlights&key=" + st.secrets["YT_KEY"])
             
                 # extracting data in json format
                 data = r.json()["items"][0]["id"]["videoId"]
